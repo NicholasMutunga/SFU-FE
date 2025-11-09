@@ -128,7 +128,7 @@ export function JobListings() {
                 <div className="flex flex-col gap-2 items-start md:items-end">
                   <span className="text-xs text-foreground/60">Posted {job.postedDate}</span>
                   <Link
-                    href={`/job-application/${job.id}`}
+                    href={`/shared-ui/job-application/${job.id}`}
                     className="inline-flex items-center gap-2 text-secondary font-bold hover:gap-3 transition-all"
                   >
                     Apply <ArrowRight size={16} />

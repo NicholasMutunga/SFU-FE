@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { Menu, X, Facebook, Twitter, Instagram, Youtube, Icon ,Phone,Mail} from "lucide-react"
 import { Button } from "./ui/button"
 import { InfiniteSlider } from "./motion-primitives/infinite-slider"
@@ -10,17 +10,18 @@ import { InfiniteSlider } from "./motion-primitives/infinite-slider"
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
+  const router =  useRouter()
 
   const navItems = [
     { label: "Home", href: "/" },
-    { label: "About Us", href: "/about" },
-    { label: "Events", href: "/events" },
-    { label: "Blogs", href: "/blog" },
-    { label: "Contact Us", href: "/contact" },
-    { label: "Careers", href: "/careers" },
-    { label: "Donate", href: "/donate" },
-    { label: "Join Us", href: "/register" },
-    { label: "Login", href: "/login" },
+    { label: "About Us", href: "/shared-ui/about" },
+    { label: "Events", href: "/shared-ui/events" },
+    { label: "Blogs", href: "/shared-ui/blog" },
+    { label: "Contact Us", href: "/shared-ui/contact" },
+    { label: "Careers", href: "/shared-ui/careers" },
+    { label: "Donate", href: "/shared-ui/donate" },
+    { label: "Join Us", href: "/shared-ui/register" },
+    { label: "Login", href: "/shared-ui/login" },
   ]
 
   const socialLinks = [
@@ -31,7 +32,10 @@ export function Header() {
   ]
 
   const isActive = (href: string) => pathname === href
-
+  const navigateLogin = (e:any) => {
+    e.preventDefault();
+    router.push('/login');
+  }
   return (
     <header className="w-full">
       {/* Top Navbar */}
@@ -97,7 +101,7 @@ export function Header() {
                       : "text-foreground hover:text-secondary"
                     }`}
                 >
-                  {item.label == "Login" ? <Button variant="outline" className="bg-secondary hover:bg-secondary/90 text-white">Login</Button> : item.label}
+                  {item.label == "Login" ? <Button variant="outline" className="bg-secondary hover:bg-secondary/90 text-white" onClick={navigateLogin}>Login</Button> : item.label}
                 </Link>
               ))}
             </div>
