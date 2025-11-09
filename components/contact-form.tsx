@@ -39,8 +39,8 @@ export function ContactForm() {
                 <Phone className="text-secondary flex-shrink-0 mt-1" size={24} />
                 <div>
                   <h3 className="font-bold text-foreground mb-1">Phone</h3>
-                  <a href="tel:+1234567890" className="text-foreground/70 hover:text-secondary transition-colors">
-                    +1 (234) 567-890
+                  <a href="tel:+254700000000" className="text-foreground/70 hover:text-secondary transition-colors">
+                    +254700000000
                   </a>
                 </div>
               </div>
