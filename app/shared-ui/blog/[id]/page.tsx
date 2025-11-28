@@ -1,20 +1,56 @@
 'use client'
 
-import { use } from 'react'
+import { use, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { BlogPostDetail } from '@/components/blog-post-detail'
 import { CommentsSection } from '@/components/comments-section'
 import { RelatedArticles } from '@/components/related-articles'
-import { blogArticles } from '@/lib/blog-data'
 import { ArrowLeft } from 'lucide-react'
+import api from '@/lib/axios'
 
 export default function BlogPostPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params)
-  const article = blogArticles.find((post) => post.id === parseInt(id))
 
-  if (!article) {
+  const [article, setArticle] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+
+  useEffect(() => {
+    async function fetchArticle() {
+      try {
+        const res = await api.get(`/blog/get-by-id/${id}`)
+
+        if (res.data.statusCode === 200) {
+          setArticle(res.data.data)
+        } else {
+          setError(true)
+        }
+      } catch (err) {
+        console.error(err)
+        setError(true)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchArticle()
+  }, [id])
+
+  if (loading) {
+    return (
+      <main className="w-full">
+        <Header />
+        <div className="max-w-4xl mx-auto px-4 py-20">
+          <p className="text-center text-xl text-foreground/60">Loading article...</p>
+        </div>
+        <Footer />
+      </main>
+    )
+  }
+
+  if (error || !article) {
     return (
       <main className="w-full">
         <Header />
@@ -26,7 +62,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ id: string 
           <div className="text-center py-20">
             <h1 className="text-4xl font-bold text-foreground mb-4">Article Not Found</h1>
             <p className="text-foreground/60 mb-8">Sorry, we couldn't find the article you're looking for.</p>
-            <Link href="/blog" className="inline-flex items-center gap-2 bg-secondary text-white px-6 py-3 rounded-lg font-bold hover:bg-secondary/90 transition-colors">
+            <Link href="/blog" className="inline-flex items-center bg-secondary text-white px-6 py-3 rounded-lg font-bold hover:bg-secondary/90">
               Back to Blog
             </Link>
           </div>
