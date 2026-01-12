@@ -5,6 +5,8 @@ import { useEffect, useState } from "react"
 import { CheckCircle } from "lucide-react"
 import api from "@/lib/axios"
 import toast, { Toaster } from "react-hot-toast"
+import Link from "next/link"
+import { CancelMembership } from "./cancel-membership"
 
 type PaymentMethod = "mpesa" | "airtel"
 type PaymentStatus = "idle" | "initiating" | "pending" | "success" | "failed"
@@ -318,7 +320,41 @@ export function RegisterForm() {
 
           {/* RIGHT — FORM */}
           <div className="bg-card border border-border rounded-lg p-8 md:w-2/3 shadow-sm">
-            <h3 className="text-2xl font-bold text-foreground mb-6">Registration Form</h3>
+            <div className="mb-8 p-6 bg-secondary/5 border border-secondary/20 rounded-xl space-y-4">
+              <div className="flex items-start gap-3">
+                <div className="mt-1 bg-secondary/10 p-1.5 rounded-full">
+                  <CheckCircle className="text-secondary w-4 h-4" />
+                </div>
+                <p className="text-sm text-foreground/80 leading-relaxed">
+                  Before registering as SFUP member, please ensure you're not registered to another political party
+                  using <span className="font-bold text-secondary">*509#</span> or by visiting the{" "}
+                  <a
+                    href="https://ippms.orpp.or.ke"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-secondary hover:underline font-medium"
+                  >
+                    IPPMS portal
+                  </a>.
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-4 pt-2">
+                <div className="text-sm">
+                  <span className="text-foreground/60">Need to leave the party? </span>
+                  <CancelMembership />
+                </div>
+                <div className="text-sm">
+                  <span className="text-foreground/60">Already a member? </span>
+                  <Link href="/shared-ui/verify-membership" className="text-secondary hover:underline font-medium">
+                    Verify here
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <h3 className="text-2xl font-bold text-foreground mb-2">Registration Form</h3>
+            <p className="text-sm text-foreground/60 mb-6">Register by filling out the membership registration form below.</p>
 
             {submitted && (
               <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">

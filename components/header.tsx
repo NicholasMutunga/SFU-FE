@@ -44,10 +44,19 @@ export function Header() {
       label: "Get Involved",
       children: [
         { label: "Become a Member", href: "/shared-ui/register" },
+        { label: "Donate", href: "/shared-ui/donate" },
         { label: "Volunteers", href: "/shared-ui/volunteer" },
         { label: "Careers", href: "/shared-ui/careers" },
         { label: "Political Aspirant", href: "/shared-ui/political-position" },
         { label: "Shop Merchandise", href: "/shared-ui/listings" },
+      ],
+    },
+
+    {
+      label: "Support",
+      children: [
+        { label: "Contact Us", href: "/shared-ui/contact" },
+        { label: "FAQs", href: "/shared-ui/faq" },
       ],
     },
   ]
@@ -164,12 +173,12 @@ export function Header() {
 
             {/* Right Actions */}
             <div className="hidden md:flex items-center gap-5">
-              <Button
+              {/* <Button
                 onClick={() => router.push("/shared-ui/donate")}
                 className="bg-secondary text-white hover:bg-secondary/90 transition-colors"
               >
                 Donate
-              </Button>
+              </Button> */}
 
               {user ? (
                 <button
@@ -257,12 +266,12 @@ export function Header() {
               )}
 
               {/* Mobile Donate CTA */}
-              <Button
+              {/* <Button
                 onClick={() => router.push("/shared-ui/donate")}
                 className="w-full bg-secondary text-white"
               >
                 Donate
-              </Button>
+              </Button> */}
             </div>
           )}
 
