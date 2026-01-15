@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -48,17 +49,6 @@ export default function EventsRegistration() {
 
   const [consent, setConsent] = useState(false)
 
-  // const formData = {
-  //     fullName,
-  //     email,
-  //     consent,
-  //   }
-
-
-
-
-
-
   return (
     <main className="px-4">
       <div className="max-w-4xl mx-auto">
@@ -71,7 +61,7 @@ export default function EventsRegistration() {
       <Card className="border-2 border-border p-8">
         <h3 className="text-xl font-bold text-foreground mb-6">Your Information</h3>
         <form className="space-y-6">
-          
+
           <div>
             <label className="block text-sm font-medium text-foreground mb-2">
               Full Name *
@@ -113,8 +103,6 @@ export default function EventsRegistration() {
             <h1>Select event through lookup</h1>
           </div>
 
-         
-
           {/* Consent */}
           <div className="flex items-start gap-3 p-4 bg-muted rounded-lg">
             <input
@@ -126,8 +114,7 @@ export default function EventsRegistration() {
               className="w-4 h-4 rounded mt-1"
             />
             <label htmlFor="consent" className="text-sm text-foreground cursor-pointer">
-              I consent to having my registration information stored and used for event registration
-               purposes, and I agree to the privacy policy.
+              I agree to the <Link href="/shared-ui/terms" className="text-secondary hover:underline">Terms & Conditions</Link> and <Link href="/shared-ui/privacy" className="text-secondary hover:underline">Privacy Policy</Link>.
             </label>
           </div>
 
@@ -141,6 +128,4 @@ export default function EventsRegistration() {
       </Card>
     </main>
   )
-
-
 }
