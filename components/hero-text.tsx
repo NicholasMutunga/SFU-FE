@@ -1,9 +1,9 @@
 import GradientText from "./GradientText";
-interface Data{
-    title:string;
+interface Data {
+    title: string;
 }
 
-export function Herotext({title}:Data) {
+export function Herotext({ title }: Data) {
     return (
         <GradientText
             colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
