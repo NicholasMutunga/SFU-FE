@@ -79,9 +79,16 @@ export function EventsGrid() {
                 <div className="p-6 flex flex-col flex-1">
                   {/* Category & Capacity */}
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs font-bold bg-secondary text-white px-3 py-1 rounded-full">
-                      {event?.event_type}
-                    </span>
+                    <div className="flex gap-2">
+                      <span className="text-xs font-bold bg-secondary text-white px-3 py-1 rounded-full">
+                        {event?.event_type}
+                      </span>
+                      {event?.isPaid && (
+                        <span className="text-xs font-bold bg-primary text-white px-3 py-1 rounded-full">
+                          KES {event?.amount}
+                        </span>
+                      )}
+                    </div>
                     <span className="text-xs font-bold text-secondary">
                       {event?.capacity}
                     </span>

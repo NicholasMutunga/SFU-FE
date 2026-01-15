@@ -54,9 +54,16 @@ export function EventsPreview() {
                   <h3 className="text-xl font-bold text-primary mb-3">{event.title}</h3>
                   <p className="text-muted-foreground mb-4 line-clamp-2">{event.description}</p>
                   <div className="space-y-2 mb-4 text-sm">
-                    <div className="flex items-center gap-2 text-muted-foreground">
-                      <Calendar size={16} />
-                      {event.event_date}
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2 text-muted-foreground">
+                        <Calendar size={16} />
+                        {event.event_date}
+                      </div>
+                      {event.isPaid && (
+                        <span className="text-xs font-bold text-secondary">
+                          KES {event.amount}
+                        </span>
+                      )}
                     </div>
                     <div className="flex items-center gap-2 text-muted-foreground">
                       <MapPin size={16} />

@@ -134,3 +134,47 @@ export function UpcomingHighlightSkeleton() {
         </div>
     )
 }
+
+export function EventDetailSkeleton() {
+    return (
+        <div className="max-w-4xl mx-auto px-4 py-12 md:py-20">
+            {/* Header Skeleton */}
+            <div className="mb-12">
+                <Skeleton className="w-full h-96 rounded-lg mb-8" />
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
+                    <div className="flex-1 space-y-4">
+                        <Skeleton className="h-12 w-3/4" />
+                        <Skeleton className="h-6 w-full" />
+                        <Skeleton className="h-6 w-5/6" />
+                    </div>
+                    <div className="flex gap-3">
+                        <Skeleton className="h-12 w-12 rounded-lg" />
+                        <Skeleton className="h-12 w-12 rounded-lg" />
+                    </div>
+                </div>
+                {/* Details Grid Skeleton */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <Skeleton className="h-24 rounded-lg" />
+                    <Skeleton className="h-24 rounded-lg" />
+                    <Skeleton className="h-24 rounded-lg" />
+                </div>
+            </div>
+
+            {/* Content Skeleton */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div className="lg:col-span-2 space-y-6">
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-3/4" />
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-5/6" />
+                </div>
+                <div className="space-y-6">
+                    <Skeleton className="h-48 rounded-lg" />
+                    <Skeleton className="h-32 rounded-lg" />
+                </div>
+            </div>
+        </div>
+    )
+}

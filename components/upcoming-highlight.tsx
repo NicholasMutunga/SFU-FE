@@ -74,10 +74,10 @@ export function UpcomingHighlight() {
 
               <div className="flex gap-4 pt-4">
                 <Link
-                  href="/register"
+                  href={`/shared-ui/events/${events[0]?.id}`}
                   className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-secondary/90 transition-colors"
                 >
-                  Register Now
+                  Learn More
                   <ArrowRight size={18} />
                 </Link>
                 <Link
